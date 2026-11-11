@@ -1,13 +1,27 @@
 public class BuggyProgram {
 
-    // Method 1: Flattened conditionals with Edge Case Handling
+    public static void main(String[] args) {
+        System.out.println("=== Testing Method 1: getGrade ===");
+        System.out.println("Score 95: " + getGrade(95));
+        System.out.println("Score 85: " + getGrade(85));
+        System.out.println("Score 50: " + getGrade(50));
+        System.out.println("Score 105: " + getGrade(105));
+
+        System.out.println("\n=== Testing Method 2: sumEvenNumbers ===");
+        int[] numbers = {1, 2, 3, 4, -2, -4};
+        System.out.println("Sum of evens: " + sumEvenNumbers(numbers));
+        System.out.println("Empty array: " + sumEvenNumbers(new int[]{}));
+
+        System.out.println("\n=== Testing Method 3: sumRange ===");
+        System.out.println("Range 1 to 5: " + sumRange(1, 5));
+        System.out.println("Inverted range 5 to 1: " + sumRange(5, 1));
+    }
+
+    // Method 1: nested conditionals
     public static String getGrade(int score) {
-        // Validate against impossible scores
         if (score < 0 || score > 100) {
             return "Invalid Score";
         }
-
-        // Inclusive boundary checks
         if (score >= 90) {
             return "Exceeds";
         } else if (score >= 80) {
@@ -16,33 +30,32 @@ public class BuggyProgram {
             return "Does Not Meet";
         }
     }
-}
+
     // Method 2: loop with array
     public static int sumEvenNumbers(int[] values) {
+        if (values == null || values.length == 0) {
+            return 0;
+        }
         int sum = 0;
-
         for (int value : values) {
             if (value % 2 == 0) {
                 sum += value;
             }
         }
+        return sum;
+    }
 
+    // Method 3: loop with bounds (no array)
+    public static int sumRange(int start, int end) {
+        if (start > end) {
+            int temp = start;
+            start = end;
+            end = temp;
+        }
+        int sum = 0;
+        for (int i = start; i <= end; i++) {
+            sum += i;
+        }
         return sum;
     }
 }
-     // Method 3: loop with bounds (no array)
-      public static int sumRange(int start, int end) {
-          int sum = 0;
-
-          for (int i = start; i <= end; i++) {
-              sum += i;
-          }
-
-           return sum;
-       }
-
-       public static void main(String[] args ){
-           System.out.println("Test the program using the JUnit tests");
-       }
-
-   }
