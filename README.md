@@ -5,5 +5,7 @@ Student Lab8: BuggyProgram
 
 BuggyProgram contains three methods: getGrade, sumEvenNumbers, sumRange
 
-Method 1: Fix Conditionals with edge case handling
+Fix Task 1 (getGrade) Conditionals with edge case handling
+
+
 
